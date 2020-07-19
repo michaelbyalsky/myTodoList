@@ -1,4 +1,111 @@
 
+body {
+    box-sizing: border-radius;
+    font-family: 'Rubik', sans-serif;
+    background-color: #128CFC;
+    border-top: 10px solid blue;
+}
+
+h1 {
+    padding: 5px 20px;
+  margin: 10px;
+  color: #0B5AA2;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#wrapper {
+    border: 1px solid black;
+    top: 0; right: 0; bottom: 0; left: 0;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    background-color: whitesmoke;
+  }
+
+#control-section {
+    display: flex;
+    text-align: center;
+    width: 300px;
+  box-shadow: 0 3px 6px rgba(black,0.16), 0 3px 6px rgba(black,0.23);
+  }
+
+  #addButton, #addImg{
+      
+     
+  }
+
+  
+#prioroty-label{
+    
+}  
+#textInput {
+    
+}
+
+#prioritySelector {
+    grid-area: priority;
+}
+
+#tasksSection {
+    display: flexbox;
+    text-align: center;
+}
+
+.todoContainer {
+    padding: 10px;
+    margin: 10px;
+    display: grid;
+    grid-gap: 10px;
+}
+
+.taskWrapper {
+    padding: 10px;
+  padding-right: 0px;
+  display: flex;
+  
+  grid-template-columns: 10fr 1fr;
+  font-size: 13px;
+  grid-gap: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.taskWrapper:hover {
+    border-radius: 20px;
+    border: 1px solid blue;
+  }
+
+  .delBtn {
+    align-self: center;
+    font-size: 15px;
+    color: skyblue;
+    font-weight: bold;
+    animation: icon 1.5s infinite forwards;
+  }
+  
+  @keyframes icon {
+    0%,100%{
+      transform: translate(0px);
+    }
+    50% {
+      transform: translate(3px);
+    }
+  }
+
+
+
+#sortButtons {
+    grid-area: sort;
+}
+
+#counterWrapper {
+    grid-area: tasksLeft;
+}
+
+.todoContainer {
+    grid-area: ul;
+}
 
 .taskWrapper {
     display: flex;
@@ -8,10 +115,22 @@
 
 }
 
-.todoCreatedAt {
-    margin-left: 1rem;
+.todoCreatedAt, .todoText, .delBtn, #prioroty-label, #addButton{
+    margin-left: 0.8rem;
 }
 
-.todoText {
-    margin-left: 1rem;
-}
+#textInput {
+border:2px solid skyblue;
+	font-size:1em;
+	padding:.25em .5em .3125em;
+	color: black;
+	border-radius:.25em;
+	transition:all .100s;
+}	
+#textInput:focus{
+		outline:none;
+		color: black;
+		border-color:blue;
+	}
+
+
