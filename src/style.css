@@ -2,5 +2,16 @@
 
 .taskWrapper {
     display: flex;
-    justify-content: space-around;
+}
+
+.todoPriority {
+
+}
+
+.todoCreatedAt {
+    margin-left: 1rem;
+}
+
+.todoText {
+    margin-left: 1rem;
 }
