@@ -4,6 +4,10 @@ body {
     font-family: 'Rubik', sans-serif;
     background-color: #128CFC;
     border-top: 10px solid blue;
+    margin-left: 20%;
+    margin-right: 30%;
+    margin-top: 5%;
+
 }
 
 h1 {
@@ -30,25 +34,12 @@ h1 {
   box-shadow: 0 3px 6px rgba(black,0.16), 0 3px 6px rgba(black,0.23);
   }
 
-  #addButton, #addImg{
-      
-     
-  }
-
-  
-#prioroty-label{
-    
-}  
-#textInput {
-    
-}
-
-#prioritySelector {
-    grid-area: priority;
+#sortSection {
+ display: flex;
+ margin-top: 2rem;
 }
 
 #tasksSection {
-    display: flexbox;
     text-align: center;
 }
 
@@ -93,20 +84,6 @@ h1 {
     }
   }
 
-
-
-#sortButtons {
-    grid-area: sort;
-}
-
-#counterWrapper {
-    grid-area: tasksLeft;
-}
-
-.todoContainer {
-    grid-area: ul;
-}
-
 .taskWrapper {
     display: flex;
 }
@@ -115,11 +92,11 @@ h1 {
 
 }
 
-.todoCreatedAt, .todoText, .delBtn, #prioroty-label, #addButton{
+.todoCreatedAt, .todoText, .delBtn, #prioritySelector, #addButton, #counterWrapper, #sortByDateButton{
     margin-left: 0.8rem;
 }
 
-#textInput {
+#textInput, #prioritySelector {
 border:2px solid skyblue;
 	font-size:1em;
 	padding:.25em .5em .3125em;
@@ -127,10 +104,48 @@ border:2px solid skyblue;
 	border-radius:.25em;
 	transition:all .100s;
 }	
-#textInput:focus{
+#textInput:focus, #prioritySelector:focus{
 		outline:none;
 		color: black;
 		border-color:blue;
 	}
 
+    #addButton, #sortButton, #sortByDateButton{
+        outline:none;
+		color: black;
+        border-color:skyblue;
+        font-size:1em;
+	padding:.25em .5em .3125em;
+	color: black;
+	border-radius:.25em;
+    transition:all .100s;
+    }
 
+    .delBtn {
+        display: flex;
+    }
+
+    #counterWrapper {
+        border: solid skyblue;
+        font-size:1em;
+	padding: .25em .5em .3125em;
+	color: black;
+	border-radius: .25em;
+    transition:all .100s;
+    padding: 5px 20px;
+    margin: 10px;
+    color: #1B5AA1;
+    font-weight: 300;
+    font-size: 20px;
+    }
+
+    #addButton:hover, #sortButton:hover, #sortByDateButton:hover {
+        outline:none;
+		color: black;
+        border-color:blue;
+        font-size:1em;
+	padding:.25em .5em .3125em;
+	color: black;
+	border-radius:.25em;
+	transition:all .100s;
+    }
