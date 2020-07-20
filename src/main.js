@@ -3,7 +3,21 @@ const priorety = document.querySelector("#prioritySelector");
 const addButton = document.querySelector("#addButton");
 const container = document.querySelector(".todoContainer");
 const taskCounter = document.querySelector("#counter");
+const searchBar = document.querySelector("#search");
 let taskCounterNumber = 0;
+
+searchBar.addEventListener("keyup", (e) => {
+    const term = e.target.value.toLowerCase();
+    const allTasks = document.querySelectorAll(".taskWrapper");
+    Array.from(allTasks).forEach(task => {
+        const title = task.querySelector(".todoText").innerText;
+        if (title.toLowerCase().indexOf(term) !== -1) {
+            task.style.display = "grid";
+        } else {
+            task.style.display = "none";
+        }
+    });
+})
 
 document.addEventListener("click", (e) => {
     //check if we pressed on the insert button
@@ -41,6 +55,8 @@ taskInput.addEventListener("keyup", (e) => {
     }
 })
 
+
+
 const addTaskFunc = () => {
     let currentTaskText = taskInput.value;
     taskInput.value = "";
@@ -50,7 +66,7 @@ const addTaskFunc = () => {
         taskCounterNumber += 1;
         taskCounter.innerText = taskCounterNumber;
         //add div wrapper for current task
-        let taskWrapper = document.createElement("li");
+        let taskWrapper = document.createElement("div");
         taskWrapper.classList.add("taskWrapper");
         container.appendChild(taskWrapper);
         //add priority to the current task
