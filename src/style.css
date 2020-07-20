@@ -2,9 +2,21 @@
 body {
     font-family: 'Rubik', sans-serif;
     background-color: #128CFC;
-    border-top: 10px solid blue;
-    margin-top: 5%;
+    margin-top: 5%;  
 }
+
+@media screen and (max-width: 400px){
+  body {
+    display: grid;
+    grid-template-columns: auto;
+  }  
+    #wrapper {
+      display: grid;
+    grid-template-columns: auto;
+    width: 100%;
+  }
+}
+
 
 h1 {
     padding: 5px 20px;
@@ -16,12 +28,14 @@ h1 {
 }
 
 #wrapper {
+  width: auto;
     border: 1px solid black;
     top: 0; right: 0; bottom: 0; left: 0;
     margin: auto;
     display: grid;
     place-items: center;
     background-color: whitesmoke;
+    border-top: 10px solid blue;
   }
 
 #control-section {
@@ -32,7 +46,7 @@ h1 {
 #sortSection {
   margin-top: 1.3rem;
  display: grid;
- grid-template-columns: repeat(3, 0.6fr);
+ grid-template-columns: repeat(3, 0.6fr) 0.7fr;
 }
 
 #tasksSection {
@@ -50,9 +64,8 @@ h1 {
     padding: 10px;
   padding-right: 0px;
   display: grid;
-  grid-template-columns: 0.2fr 1fr 0.8fr 0.1fr 1.2fr;
+  grid-template-columns: 0.2fr 0.7fr 0.8fr 0.1fr 1.2fr;
   border: 1px solid transparent;
-  cursor: move;
   color: rgb(245, 249, 252);
   font-weight: bolder;
   align-items: center;
@@ -62,14 +75,18 @@ h1 {
 
 .taskWrapper:hover {
   border: #2c2d2e solid 0.08rem;
-  
+  transform: scale(1.02);
+  transition:all .300s;
+
   }
 
   .delBtn {
     font-size: 15px;
-    color: skyblue;
+    color: black;
     font-weight: bold;
-    animation: icon 1.5s infinite forwards;
+    transform: scale(1.1);
+    transition:all .300s;
+    cursor: pointer;
   }
   
   @keyframes icon {
@@ -81,7 +98,9 @@ h1 {
     }
   }
 
-.todoCreatedAt, .todoText, .delBtn, #prioritySelector, #addButton, #counterWrapper, #sortByDateButton, #search{
+.todoCreatedAt, .todoText, .delBtn, #prioritySelector, 
+#addButton, #counterWrapper, 
+#sortByDateButton, #search, #deleteAll{
     margin-left: 0.8rem;
 }
 
@@ -102,8 +121,6 @@ border:2px solid skyblue;
   .hide {
     display: none;
   }
-
-    
 
     #counterWrapper {
         border: solid skyblue;
@@ -130,10 +147,7 @@ color: black;
 border-radius:.25em;
   transition:all .100s;
   text-align: center;
-  }
-
-  .delBtn {
-      display: flex;
+  cursor: pointer;
   }
 
     #addButton:hover, #sortButton:hover, #sortByDateButton:hover {
@@ -147,12 +161,6 @@ border-radius:.25em;
   transition:all .100s;
     }
 
-    .sure {
-      display: flex;
-      align-items: center;
-      
-    }
-
   #sortButton, #sortByDateButton {
     outline:none;
     color: black;
@@ -164,6 +172,31 @@ border-radius:.25em;
     transition:all .100s;
     text-align: center;
     align-items: center;
+    cursor: pointer;
+  }
+
+  #deleteAll {
+    outline:none;
+    color: black;
+        border-color:rgb(233, 56, 56);
+        font-size:1em;
+  padding:.25em .5em .3125em;
+  color: black;
+  border-radius:.25em;
+    transition:all .100s;
+    text-align: center;
+    align-items: center;
+    border-width: 0.2rem;
+  }
+
+  #deleteAll:hover {
+  outline:none;
+  color: black;
+    border-color:rgb(255, 0, 13);
+    background-color: red;
+    transition:all 0.5s;
+    font-weight: bolder;
+    font-size: 1rem;
   }
 
   .deleteSure, .undoBtn {

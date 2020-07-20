@@ -11,14 +11,14 @@
             <h1>ToDoList</h1>    
             <p id="counterWrapper">tasks left: <span id="counter"> 0</span></p>
             <section id="control-section">
-            <input type="text" id="textInput" placeholder="insert task" />
+            <input type="text" id="textInput" placeholder="Insert task" />
             <!-- <label id="prioroty-label" for="priority"></label> -->
             <select name="priority" id="prioritySelector">
-                <option value="1">1 - Lowest</option>
-                <option value="2">2 - Act Soon</option>
-        <option value="3">3 - Alterning</option>
-        <option value="4">4 - Critical</option>
-        <option value="5">5 - Highest</option>
+                <option value="1">1 - Lowest Priority</option>
+                <option value="2">2 - Act Soon Priority</option>
+        <option value="3">3 - Alterning Priority</option>
+        <option value="4">4 - Critical Priority</option>
+        <option value="5">5 - Highest Priority</option>
       </select>
       <button id="addButton">submit</button>
     </section>
@@ -26,6 +26,7 @@
             <button id="sortButton">Sort by proirity</button>
         <button id="sortByDateButton">Sort by date</button>
         <input type="text" id="search" placeholder="search for task">
+        <button id="deleteAll">delete all tasks</button>
     </div>
     <section id="tasksSection">
         <div class="todoContainer"></div>

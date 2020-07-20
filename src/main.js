@@ -1,10 +1,23 @@
+let taskCounterNumber;
+window.onload = () => {
+    if (localStorage.getItem("saveTask") !== null) {
+        document.querySelector(".todoContainer").innerHTML = localStorage.getItem("saveTask");
+    }
+if (localStorage.getItem("saveCounter") !== null) {
+    taskCounterNumber = Number(localStorage.getItem("saveCounter"));
+    taskCounter.innerText = taskCounterNumber;
+} else {
+    taskCounterNumber = 0;
+}
+}
+
 const taskInput = document.querySelector("#textInput");
 const priorety = document.querySelector("#prioritySelector");
 const addButton = document.querySelector("#addButton");
 const container = document.querySelector(".todoContainer");
 const taskCounter = document.querySelector("#counter");
 const searchBar = document.querySelector("#search");
-let taskCounterNumber = 0;
+const deleteAll = document.querySelector("#deleteAll");
 
 searchBar.addEventListener("keyup", (e) => {
     const term = e.target.value.toLowerCase();
@@ -37,12 +50,22 @@ document.addEventListener("click", (e) => {
         removeItem(e);
     }
 
+    if (e.target.id === "deleteAll") {
+        //call the remove func
+        container.innerHTML = "";
+        taskCounterNumber = 0;
+        taskCounter.innerText = taskCounterNumber;
+        localStorage.clear();
+    }
+
     //if you sure section
     if (e.target.className === "deleteSure") {
         let li = e.target.parentElement.parentElement;
         li.parentElement.removeChild(li);
         taskCounterNumber -= 1;
         taskCounter.innerText = taskCounterNumber;
+        localStorage.setItem("saveTask", document.querySelector(".todoContainer").innerHTML);
+        localStorage.setItem("saveCounter", document.querySelector("#counter").innerHTML);
     } else if (e.target.className === "undoBtn") {
         let undo = e.target.parentElement;
         undo.parentElement.removeChild(undo);
@@ -54,7 +77,6 @@ taskInput.addEventListener("keyup", (e) => {
         addTaskFunc();
     }
 })
-
 
 
 const addTaskFunc = () => {
@@ -108,8 +130,14 @@ const addTaskFunc = () => {
         delBtn.classList.add("delBtn");
         delBtn.textContent = "X";
         taskWrapper.appendChild(delBtn);
+        //add to local strage
+        localStorage.setItem("saveTask", document.querySelector(".todoContainer").innerHTML);
+        localStorage.setItem("saveCounter", document.querySelector("#counter").innerHTML);
+        console.log(localStorage);
     }
 };
+
+
 
 const removeItem = (e) => {
     //define the father
@@ -177,3 +205,5 @@ no switching has been done: */
         }
     }
 };
+
+
