@@ -4,8 +4,6 @@ body {
     font-family: 'Rubik', sans-serif;
     background-color: #128CFC;
     border-top: 10px solid blue;
-    margin-left: 20%;
-    margin-right: 30%;
     margin-top: 5%;
 
 }
@@ -53,22 +51,23 @@ h1 {
 .taskWrapper {
     padding: 10px;
   padding-right: 0px;
-  display: flex;
-  
-  grid-template-columns: 10fr 1fr;
-  font-size: 13px;
-  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.8fr 0.1fr 1.2fr;
   border: 1px solid transparent;
   cursor: pointer;
+  color: rgb(245, 249, 252);
+  font-weight: bolder;
+  align-items: center;
+  border-radius: 4%;
 }
 
+
 .taskWrapper:hover {
-    border-radius: 20px;
-    border: 1px solid blue;
+  border: #2c2d2e solid 0.08rem;
+  
   }
 
   .delBtn {
-    align-self: center;
     font-size: 15px;
     color: skyblue;
     font-weight: bold;
@@ -83,14 +82,6 @@ h1 {
       transform: translate(3px);
     }
   }
-
-.taskWrapper {
-    display: flex;
-}
-
-.todoPriority {
-
-}
 
 .todoCreatedAt, .todoText, .delBtn, #prioritySelector, #addButton, #counterWrapper, #sortByDateButton{
     margin-left: 0.8rem;
@@ -110,20 +101,7 @@ border:2px solid skyblue;
 		border-color:blue;
 	}
 
-    #addButton, #sortButton, #sortByDateButton{
-        outline:none;
-		color: black;
-        border-color:skyblue;
-        font-size:1em;
-	padding:.25em .5em .3125em;
-	color: black;
-	border-radius:.25em;
-    transition:all .100s;
-    }
-
-    .delBtn {
-        display: flex;
-    }
+    
 
     #counterWrapper {
         border: solid skyblue;
@@ -137,7 +115,24 @@ border:2px solid skyblue;
     color: #1B5AA1;
     font-weight: 300;
     font-size: 20px;
+    position: fixed;
     }
+
+    #addButton{
+      outline:none;
+  color: black;
+      border-color:skyblue;
+      font-size:1em;
+padding:.25em .5em .3125em;
+color: black;
+border-radius:.25em;
+  transition:all .100s;
+  text-align: center;
+  }
+
+  .delBtn {
+      display: flex;
+  }
 
     #addButton:hover, #sortButton:hover, #sortByDateButton:hover {
         outline:none;
@@ -147,5 +142,46 @@ border:2px solid skyblue;
 	padding:.25em .5em .3125em;
 	color: black;
 	border-radius:.25em;
-	transition:all .100s;
+  transition:all .100s;
     }
+
+    .sure {
+      display: flex;
+      align-items: center;
+      
+    }
+
+  #sortButton, #sortByDateButton {
+    outline:none;
+    color: black;
+        border-color:skyblue;
+        font-size:1em;
+  padding:.25em .5em .3125em;
+  color: black;
+  border-radius:.25em;
+    transition:all .100s;
+    text-align: center;
+    align-items: center;
+  }
+
+  .deleteSure, .undoBtn {
+    margin-left: 1rem;
+    outline:none;
+    color: black;
+        border-color:skyblue;
+        font-size:1em;
+  color: black;
+  border-radius:.25em;
+    transition:all .100s;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .sure {
+    margin-left: 1rem;
+  }
+
+  .todoText {
+    word-break: break-all;
+    text-align: left;
+  }

@@ -62,9 +62,9 @@ const addTaskFunc = () => {
          } else if (Number(priorityNum) === 2) {
             taskWrapper.style.backgroundColor = "green" 
          } else if (Number(priorityNum) === 3) {
-            taskWrapper.style.backgroundColor = "yellow" 
-         } else if (Number(priorityNum) === 4) {
             taskWrapper.style.backgroundColor = "orange" 
+         } else if (Number(priorityNum) === 4) {
+            taskWrapper.style.backgroundColor = "brown" 
          } else if (Number(priorityNum) === 5) {
             taskWrapper.style.backgroundColor = "red" 
          }
@@ -102,18 +102,18 @@ const removeItem = (e) => {
     const sure = document.createElement("span");
     sure.classList.add("sure");
     li.appendChild(sure)
-    sure.textContent = "Are you sure?"
+    sure.textContent = "sure?"
     //create sure buttons (children) 
     //delete button
     var deleteSure = document.createElement("button");
     deleteSure.classList.add("deleteSure");
     sure.appendChild(deleteSure)
-    deleteSure.textContent = "delete"
+    deleteSure.textContent = "Yes"
     //undo button
     var undoBtn = document.createElement("button");
     undoBtn.classList.add("undoBtn");
     sure.appendChild(undoBtn)
-    undoBtn.textContent = "undo"
+    undoBtn.textContent = "Undo"
 }
 
 const sortList = (sortType) => {
@@ -142,7 +142,7 @@ no switching has been done: */
                 /* Check if the next item should
           switch place with the current item by date: */
             } else if (sortType === "date") {
-                if (b[i].innerHTML.slice(0, 10) > b[i + 1].innerHTML.slice(0, 10) || b[i].innerHTML.slice(11, -1) > b[i + 1].innerHTML.slice(11, -1)) {
+                if (Date.parse(b[i].innerHTML.slice(0, 10)) > Date.parse(b[i + 1].innerHTML.slice(0, 10)) || Date.parse(b[i].innerHTML.slice(11, -1)) > Date.parse(b[i + 1].innerHTML.slice(11, -1))) {
                     /* If next item is alphabetically lower than current item,
               mark as a switch and break the loop: */
                     shouldSwitch = true;
