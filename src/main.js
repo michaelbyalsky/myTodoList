@@ -2,17 +2,17 @@
 //define the task counter
 let taskCounterNumber;
 
-/*The function checks if there is there is tasks in the local storage and loads them*/  
+/*The function checks if there is there is tasks in the local storage and loads them*/
 window.onload = () => {
     if (localStorage.getItem("saveTask") !== null) {
         document.querySelector(".todoContainer").innerHTML = localStorage.getItem("saveTask");
     }
-if (localStorage.getItem("saveCounter") !== null) {
-    taskCounterNumber = Number(localStorage.getItem("saveCounter"));
-    taskCounter.innerText = taskCounterNumber;
-} else {
-    taskCounterNumber = 0;
-}
+    if (localStorage.getItem("saveCounter") !== null) {
+        taskCounterNumber = Number(localStorage.getItem("saveCounter"));
+        taskCounter.innerText = taskCounterNumber;
+    } else {
+        taskCounterNumber = 0;
+    }
 }
 
 const taskInput = document.querySelector("#textInput");
@@ -92,19 +92,19 @@ const addTaskFunc = () => {
         currentTaskPriority.classList.add("todoPriority");
         currentTaskPriority.innerText = priorityNum;
         //Change the task color by his priority
-         if (Number(priorityNum) === 1) {
+        if (Number(priorityNum) === 1) {
             taskWrapper.style.backgroundColor = "blue"
-         } else if (Number(priorityNum) === 2) {
-            taskWrapper.style.backgroundColor = "green" 
-         } else if (Number(priorityNum) === 3) {
-            taskWrapper.style.backgroundColor = "orange" 
-         } else if (Number(priorityNum) === 4) {
-            taskWrapper.style.backgroundColor = "brown" 
-         } else if (Number(priorityNum) === 5) {
-            taskWrapper.style.backgroundColor = "red" 
-         }
+        } else if (Number(priorityNum) === 2) {
+            taskWrapper.style.backgroundColor = "green"
+        } else if (Number(priorityNum) === 3) {
+            taskWrapper.style.backgroundColor = "orange"
+        } else if (Number(priorityNum) === 4) {
+            taskWrapper.style.backgroundColor = "brown"
+        } else if (Number(priorityNum) === 5) {
+            taskWrapper.style.backgroundColor = "red"
+        }
         taskWrapper.appendChild(currentTaskPriority);
-        //add time to the current task
+        //add the local time to the current task
         let dd = new Date();
         let getTime = dd.getFullYear().toString() + "-" +
             ("0" + (dd.getMonth() + 1).toString()).slice(-2) +
@@ -125,11 +125,11 @@ const addTaskFunc = () => {
         //create delete button
         let delBtn = document.createElement("button");
         delBtn.classList.add("delBtn");
-        delBtn.textContent = "X";
+        delBtn.textContent = "V";
         taskWrapper.appendChild(delBtn);
         //add to local stOrage
         addToLocalStorage();
-        
+
     }
 };
 //add to local storage function
@@ -145,7 +145,7 @@ const removeItem = (e) => {
     const sure = document.createElement("span");
     sure.classList.add("sure");
     li.appendChild(sure)
-    sure.textContent = "sure?"
+    sure.textContent = "done?"
     //create sure buttons (children) 
     //delete button
     var deleteSure = document.createElement("button");
@@ -165,30 +165,30 @@ const sortListByPriority = () => {
     switching = true;
     //continue the loop while there is no switching
     while (switching) {
-      // Start by saying: no switching is done:
-      switching = false;
-      b = list.querySelectorAll(".todoPriority");
-      // Loop through all list items:
-      for (i = 0; i < b.length - 1; i++) {
-        // Start by saying there should be no switching:
-        shouldSwitch = false;
-        // Check if the next item shouldswitch place with the current item:
-        if (b[i].innerHTML < b[i + 1].innerHTML) {
-          //If the next has bigger priority so it need to be switched
-          shouldSwitch = true;
-          break;
+        // Start by saying: no switching is done:
+        switching = false;
+        b = list.querySelectorAll(".todoPriority");
+        // Loop through all list items:
+        for (i = 0; i < b.length - 1; i++) {
+            // Start by saying there should be no switching:
+            shouldSwitch = false;
+            // Check if the next item shouldswitch place with the current item:
+            if (b[i].innerHTML < b[i + 1].innerHTML) {
+                //If the next has bigger priority so it need to be switched
+                shouldSwitch = true;
+                break;
+            }
         }
-      }
-      if (shouldSwitch) {
-        // If a switch has been marked, make the switch and mark the switch as done: 
-        b[i].parentNode.parentNode.insertBefore(
-          b[i + 1].parentNode,
-          b[i].parentNode
-        );
-        switching = true;
-      }
+        if (shouldSwitch) {
+            // If a switch has been marked, make the switch and mark the switch as done: 
+            b[i].parentNode.parentNode.insertBefore(
+                b[i + 1].parentNode,
+                b[i].parentNode
+            );
+            switching = true;
+        }
     }
-  };
+};
 
 //The function compare the users keyword in the search bar to the tasks names
 searchBar.addEventListener("keyup", (e) => {
@@ -204,93 +204,95 @@ searchBar.addEventListener("keyup", (e) => {
     });
 })
 
-  const sortListByDate = () => {
+const sortListByDate = () => {
     let i, switching, b, shouldSwitch;
     list = document.querySelector(".todoContainer");
     switching = true;
     //continue the loop while there is no switching
     while (switching) {
-      // Start by saying: no switching is done:
-      switching = false;
-      b = list.querySelectorAll(".todoCreatedAt");
-      // Loop through all list items:
-      for (i = 0; i < b.length - 1; i++) {
-        // Start by saying there should be no switching:
-        shouldSwitch = false;
-        // Check if the next item shouldswitch place with the current item:
-        if (Date.parse(b[i].innerHTML.slice(0, 10)) > Date.parse(b[i + 1].innerHTML.slice(0, 10)) ||
-        (Date.parse(b[i].innerHTML.slice(0, 10)) === Date.parse(b[i + 1].innerHTML.slice(0, 10)) && 
-        Date.parse(b[i].innerHTML.slice(11, -1).replace(/\D/g,'')) > Date.parse(b[i + 1].innerHTML.slice(11, -1).replace(/\D/g,'')))) {
-        //If the next item added before so it need to be switched
-          shouldSwitch = true;
-          break;
+        // Start by saying: no switching is done:
+        switching = false;
+        b = list.querySelectorAll(".todoCreatedAt");
+        // Loop through all list items:
+        for (i = 0; i < b.length - 1; i++) {
+            // Start by saying there should be no switching:
+            shouldSwitch = false;
+            // Check if the next item shouldswitch place with the current item:
+            if (Date.parse(b[i].innerHTML.slice(0, 10)) > Date.parse(b[i + 1].innerHTML.slice(0, 10)) ||
+                (Date.parse(b[i].innerHTML.slice(0, 10)) === Date.parse(b[i + 1].innerHTML.slice(0, 10)) &&
+                    Date.parse(b[i].innerHTML.slice(11, -1).replace(/\D/g, '')) > Date.parse(b[i + 1].innerHTML.slice(11, -1).replace(/\D/g, '')))) {
+                //If the next item added before so it need to be switched
+                shouldSwitch = true;
+                break;
+            }
         }
-      }
-      if (shouldSwitch) {
-    // If a switch has been marked, make the switch and mark the switch as done: 
-        b[i].parentNode.parentNode.insertBefore(
-          b[i + 1].parentNode,
-          b[i].parentNode
-        );
-        switching = true;
-      }
+        if (shouldSwitch) {
+            // If a switch has been marked, make the switch and mark the switch as done: 
+            b[i].parentNode.parentNode.insertBefore(
+                b[i + 1].parentNode,
+                b[i].parentNode
+            );
+            switching = true;
+        }
     }
-  };
+};
 
-  //this event listener tells if the page is completly loaded with all the tasks from the local storage 
-  window.addEventListener('load', function() {
-//Select all taskstaskWrapper
-const draggables = document.querySelectorAll('.taskWrapper')
-const containers = document.querySelectorAll('.todoContainer')
-//give a class to the item we started to drag
-draggables.forEach(draggable => {
-    draggable.addEventListener('dragstart', () => {
-      draggable.classList.add('dragging')
+//this event listener tells if the page is completly loaded with all the tasks from the local storage 
+window.addEventListener('load', function () {
+    //Select all taskstaskWrapper
+    const draggables = document.querySelectorAll('.taskWrapper')
+    const containers = document.querySelectorAll('.todoContainer')
+    //give a class to the item we started to drag
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', () => {
+            draggable.classList.add('dragging')
+        })
+        //remove the class below  
+        draggable.addEventListener('dragend', () => {
+            draggable.classList.remove('dragging')
+        })
     })
-//remove the class below  
-    draggable.addEventListener('dragend', () => {
-      draggable.classList.remove('dragging')
-    })
-  })
-  
-  /*The event allows us to append the draageble item to the container 
-  and change places with the others*/ 
+
+    /*The event allows us to append the draageble item to the container 
+    and change places with the others*/
+    containers.forEach(container => {
     container.addEventListener('dragover', e => {
-      //By defaul dropping inside in an element is disable so we need to prevent it 
-      e.preventDefault()
-      const afterElement = getDragAfterElement(container, e.clientY)
-      const draggable = document.querySelector('.dragging')
-      if (afterElement == null) {
-        container.appendChild(draggable)
-      } else {
-        container.insertBefore(draggable, afterElement)
-      }
+        //By defaul dropping inside in an element is disable so we need to prevent it 
+        e.preventDefault()
+        const afterElement = getDragAfterElement(container, e.clientY)
+        const draggable = document.querySelector('.dragging')
+        if (afterElement == null) {
+            container.appendChild(draggable)
+        } else {
+            container.insertBefore(draggable, afterElement)
+        }
     })
- 
-  /*the function determine the mouse position when we dragging an element 
-  and return the mouse position of the task that after this position*/
-  function getDragAfterElement(container, y) {
-    //select the tasks that we not dragging right now and covert them to string
-    const draggableElements = [...container.querySelectorAll('.taskWrapper:not(.dragging)')]
-  
-    /*the function returns the closest object to the one we drgging
-    depends on the y position we got from the event*/ 
-    return draggableElements.reduce((closest, child) => {
-      //configre the chiled place  
-      const box = child.getBoundingClientRect()
-      //get the offset between our mouse position and the middle of the box
-      const offset = y - box.top - box.height / 2
-      /*figure out which ofset is the most closer to 0 between the two tasks
-      and return the closest element*/ 
-      if (offset < 0 && offset > closest.offset) {
-        return { offset: offset, element: child }
-      } else {
-        return closest
-      }
-    }, { offset: Number.NEGATIVE_INFINITY }).element
-  }
-  
+})
+
+
+    /*the function determine the mouse position when we dragging an element 
+    and return the mouse position of the task that after this position*/
+    function getDragAfterElement(container, y) {
+        //select the tasks that we not dragging right now and covert them to string
+        const draggableElements = [...container.querySelectorAll('.taskWrapper:not(.dragging)')]
+
+        /*the function returns the closest object to the one we drgging
+        depends on the y position we got from the event*/
+        return draggableElements.reduce((closest, child) => {
+            //configre the chiled place  
+            const box = child.getBoundingClientRect()
+            //get the offset between our mouse position and the middle of the box
+            const offset = y - box.top - box.height / 2
+            /*figure out which ofset is the most closer to 0 between the two tasks
+            and return the closest element*/
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child }
+            } else {
+                return closest
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).element
+    }
+
 });
 
 
-  

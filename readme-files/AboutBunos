@@ -1,0 +1,28 @@
+1. Sort By date- i've added a button and function which based on the sort by priority function.
+I used the Date.parse method that returns the number of milliseconds since January 1, 1970, 00:00:00
+and alode me to do the compare between times.
+
+2. Task colors - i've added colors to the priority that i will be easier to ditinguish between them.
+
+3. search methon which compares the word in the search box to the task name. 
+
+4. Local storage - Whenever we adding task or remove one, the local storage 
+ apdates to the current value of the inner html of the
+ task section and the inner html of the task counter.
+ When we refresh the window if cheks if there is
+ an information in the local storage and extract information
+ to the document.
+
+ 5. Delete all button - get a collor of red when it covered by
+ the mouse. the delete all button delete all tasks andcleers the local storage.
+
+ 6. Drag elements - this block availible only when the page
+ completly loaded otherwise it cannot get all the data which
+ sace in the local storage. There is a comments about almost
+ each block of those code lines which located in the end
+ of the code.
+
+ 7. CSS - I've added media query to adapt the screen size to the 
+ application. Also I've added hover and focus selectors to 
+ buutons anf fields, different cursors to the buttons andthe tasks, 
+ and opacity when we gargging elements. 
