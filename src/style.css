@@ -1,85 +1,102 @@
 
 body {
-    font-family: 'Rubik', sans-serif;
-    background-color: #128CFC;
-    margin-top: 5%;  
+  font-family: "Rubik", sans-serif;
+background-color: #128cfc;
+margin-top: 5%;
 }
 
-@media screen and (max-width: 400px){
+@media (min-width: 1000px) {
   body {
-    display: grid;
-    grid-template-columns: auto;
-  }  
-    #wrapper {
-      display: grid;
-    grid-template-columns: auto;
-    width: 100%;
+    font-family: "Rubik", sans-serif;
+  background-color: #128cfc;
+  margin-top: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
+    transition: all 0.3s;
   }
 }
 
+@media (max-width: 1000px) {
+  body {
+    margin: 0%;
+    transition: all 0.3s;
+  }
+}
+
+@media (max-width: 550px) {
+  body {
+    font-size: small;
+    transition: all 0.3s;
+  }
+}
 
 h1 {
-    padding: 5px 20px;
+  padding: 5px 20px;
   margin: 10px;
-  color: #0B5AA2;
+  color: #0b5aa2;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
   display: grid;
 }
 
 #wrapper {
   width: auto;
-    border: 1px solid black;
-    top: 0; right: 0; bottom: 0; left: 0;
-    margin: auto;
-    display: grid;
-    place-items: center;
-    background-color: whitesmoke;
-    border-top: 10px solid blue;
-  }
+  border: 1px solid black;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  background-color: whitesmoke;
+  border-top: 10px solid blue;
+}
 
 #control-section {
-    display: grid;
-    grid-template-columns: repeat(3, 0.7fr);
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 0.7fr);
+}
 
 #sortSection {
   margin-top: 1.3rem;
- display: grid;
- grid-template-columns: repeat(3, 0.6fr) 0.7fr;
+  display: grid;
+  grid-template-columns: repeat(3, 0.6fr) 0.7fr;
 }
 
-#textInput, #prioritySelector, #search {
-  border:2px solid skyblue;
-    font-size:1em;
-    padding:.25em .5em .3125em;
-    color: black;
-    border-radius:.25em;
-    transition:all .100s;
-  }	
+#textInput,
+#prioritySelector,
+#search {
+  border: 2px solid skyblue;
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+}
 
-  #addButton{
-    outline:none;
-color: black;
-    border-color:skyblue;
-    font-size:1em;
-padding:.25em .5em .3125em;
-color: black;
-border-radius:.25em;
-transition:all .100s;
-text-align: center;
-cursor: pointer;
+#addButton {
+  outline: none;
+  color: black;
+  border-color: skyblue;
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+  text-align: center;
+  cursor: pointer;
 }
 
 .todoContainer {
-    padding: 10px;
-    margin: 10px;
-    display: grid;
-    grid-gap: 10px;
+  padding: 10px;
+  margin: 10px;
+  display: grid;
+  grid-gap: 10px;
 }
 
 .taskWrapper {
-    padding: 10px;
+  padding: 10px;
   padding-right: 0px;
   display: grid;
   grid-template-columns: 0.2fr 0.7fr 0.8fr 0.1fr 1.2fr;
@@ -88,130 +105,143 @@ cursor: pointer;
   font-weight: bolder;
   align-items: center;
   border-radius: 4%;
+  cursor: move;
 }
 
-
-/* .taskWrapper:hover {
-  border: #2c2d2e solid 0.08rem;
-  transform: scale(1.02);
-  transition:all .300s;
-
-  } */
-
-  .delBtn {
-    font-size: 15px;
-    color: black;
-    font-weight: bold;
-    transform: scale(1.1);
-    transition:all .300s;
-    cursor: pointer;
-  }
-  
-  @keyframes icon {
-    0%,100%{
-      transform: translate(0px);
-    }
-    50% {
-      transform: translate(3px);
-    }
-  }
-
-.todoCreatedAt, .todoText, .delBtn, #prioritySelector, 
-#addButton, #counterWrapper, 
-#sortByDateButton, #search, #deleteAll{
-    margin-left: 0.8rem;
+.delBtn {
+  font-size: 15px;
+  color: black;
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
-
-#textInput:focus, #prioritySelector:focus, #search:focus{
-		outline:none;
-		color: black;
-		border-color:blue;
+@keyframes icon {
+  0%,
+  100% {
+    transform: translate(0px);
   }
-  
-    #counterWrapper {
-        border: solid skyblue;
-        font-size:1em;
-	padding: .25em .5em .3125em;
-	color: black;
-	border-radius: .25em;
-    transition:all .100s;
-    padding: 5px 20px;
-    margin: 10px;
-    color: #1B5AA1;
-    font-weight: 300;
-    font-size: 20px;
-    position: fixed;
-    }
+  50% {
+    transform: translate(3px);
+  }
+}
 
- 
-    #addButton:hover, #sortButton:hover, #sortByDateButton:hover {
-        outline:none;
-		color: black;
-        border-color:blue;
-        font-size:1em;
-	padding:.25em .5em .3125em;
-	color: black;
-	border-radius:.25em;
-  transition:all .100s;
-    }
+.todoCreatedAt,
+.todoText,
+.delBtn,
+#prioritySelector,
+#addButton,
+#counterWrapper,
+#sortByDateButton,
+#search,
+#deleteAll {
+  margin-left: 0.8rem;
+}
 
-  #sortButton, #sortByDateButton {
-    outline:none;
-    color: black;
-        border-color:skyblue;
-        font-size:1em;
-  padding:.25em .5em .3125em;
+#textInput:focus,
+#prioritySelector:focus,
+#search:focus {
+  outline: none;
   color: black;
-  border-radius:.25em;
-    transition:all .100s;
-    text-align: center;
-    align-items: center;
-    cursor: pointer;
-  }
+  border-color: blue;
+}
 
-  #deleteAll {
-    outline:none;
-    color: black;
-        border-color:rgb(233, 56, 56);
-        font-size:1em;
-  padding:.25em .5em .3125em;
+#counterWrapper {
+  border: solid skyblue;
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
   color: black;
-  border-radius:.25em;
-    transition:all .100s;
-    text-align: center;
-    align-items: center;
-    border-width: 0.2rem;
-  }
+  border-radius: 0.25em;
+  padding: 5px 20px;
+  color: #1b5aa1;
+  font-weight: 300;
+  font-size: 20px;
+}
 
-  #deleteAll:hover {
-  outline:none;
+#addButton:hover,
+#sortButton:hover,
+#sortByDateButton:hover {
+  outline: none;
   color: black;
-    border-color:rgb(255, 0, 13);
-    background-color: red;
-    transition:all 0.5s;
-    font-weight: bolder;
-    font-size: 1rem;
-  }
-
-  .deleteSure, .undoBtn {
-    margin-left: 1rem;
-    outline:none;
-    color: black;
-        border-color:skyblue;
-        font-size:1em;
+  border-color: blue;
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
   color: black;
-  border-radius:.25em;
-    transition:all .100s;
-    text-align: center;
-    align-items: center;
-  }
-  
-  .sure {
-    margin-left: 1rem;
-  }
+  border-radius: 0.25em;
+  transition: all 0.1s;
+}
 
-  .todoText {
-    word-break: break-all;
-    text-align: left;
-  }
+#sortButton,
+#sortByDateButton {
+  outline: none;
+  color: black;
+  border-color: skyblue;
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#deleteAll {
+  outline: none;
+  color: black;
+  border-color: rgb(233, 56, 56);
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+  text-align: center;
+  align-items: center;
+  border-width: 0.2rem;
+}
+
+#deleteAll:hover {
+  outline: none;
+  color: black;
+  border-color: rgb(255, 0, 13);
+  background-color: red;
+  transition: all 0.5s;
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+.deleteSure,
+.undoBtn {
+  margin-left: 1rem;
+  outline: none;
+  color: black;
+  border-color: skyblue;
+  font-size: 1em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+  text-align: center;
+  align-items: center;
+}
+
+.sure {
+  margin-left: 1rem;
+}
+
+.todoText {
+  word-break: break-all;
+  text-align: left;
+}
+
+.draggable {
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid black;
+  cursor: move;
+}
+
+.draggable.dragging {
+  opacity: 0.5;
+}
+

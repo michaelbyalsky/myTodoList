@@ -1,4 +1,8 @@
+
+//define the task counter
 let taskCounterNumber;
+
+/*The function checks if there is there is tasks in the local storage and loads them*/  
 window.onload = () => {
     if (localStorage.getItem("saveTask") !== null) {
         document.querySelector(".todoContainer").innerHTML = localStorage.getItem("saveTask");
@@ -19,37 +23,28 @@ const taskCounter = document.querySelector("#counter");
 const searchBar = document.querySelector("#search");
 const deleteAll = document.querySelector("#deleteAll");
 
-searchBar.addEventListener("keyup", (e) => {
-    const term = e.target.value.toLowerCase();
-    const allTasks = document.querySelectorAll(".taskWrapper");
-    Array.from(allTasks).forEach(task => {
-        const title = task.querySelector(".todoText").innerText;
-        if (title.toLowerCase().indexOf(term) !== -1) {
-            task.style.display = "grid";
-        } else {
-            task.style.display = "none";
-        }
-    });
-})
 
+
+//click event listener
 document.addEventListener("click", (e) => {
     //check if we pressed on the insert button
     if (e.target.id === "addButton") {
         addTaskFunc();
     }
+    //check if we pressed on the sort by priority button
     if (e.target.id === "sortButton") {
-        sortList();
+        sortListByPriority();
     }
-
+    //check if we pressed on the sort by date button
     if (e.target.id === "sortByDateButton") {
         sortListByDate();
     }
-
+    //check if we pressed on the delete certain task button
     if (e.target.className === "delBtn") {
         //call the remove func
         removeItem(e);
     }
-
+    //check if we pressed on the delete all button
     if (e.target.id === "deleteAll") {
         //call the remove func
         container.innerHTML = "";
@@ -58,7 +53,7 @@ document.addEventListener("click", (e) => {
         localStorage.clear();
     }
 
-    //if you sure section
+    //Asks the customer if he is sore about deleting certain task
     if (e.target.className === "deleteSure") {
         let li = e.target.parentElement.parentElement;
         li.parentElement.removeChild(li);
@@ -70,7 +65,7 @@ document.addEventListener("click", (e) => {
         undo.parentElement.removeChild(undo);
     }
 });
-
+//Gives the option to add task by click
 taskInput.addEventListener("keyup", (e) => {
     if (e.keyCode === 13 && e.target.id === "textInput") {
         addTaskFunc();
@@ -96,6 +91,7 @@ const addTaskFunc = () => {
         let currentTaskPriority = document.createElement("div");
         currentTaskPriority.classList.add("todoPriority");
         currentTaskPriority.innerText = priorityNum;
+        //Change the task color by his priority
          if (Number(priorityNum) === 1) {
             taskWrapper.style.backgroundColor = "blue"
          } else if (Number(priorityNum) === 2) {
@@ -116,11 +112,12 @@ const addTaskFunc = () => {
             ("0" + dd.getDate().toString()).slice(-2) +
             " " +
             new Date().toString().slice(16, 25);
+        //add task date    
         let currentTaskTime = document.createElement("div");
         currentTaskTime.innerText = getTime;
         currentTaskTime.classList.add("todoCreatedAt");
         taskWrapper.appendChild(currentTaskTime);
-        //add the current task
+        //add the task text
         let currentTask = document.createElement("div");
         currentTask.innerText = currentTaskText;
         currentTask.classList.add("todoText");
@@ -130,12 +127,12 @@ const addTaskFunc = () => {
         delBtn.classList.add("delBtn");
         delBtn.textContent = "X";
         taskWrapper.appendChild(delBtn);
-        //add to local strage
+        //add to local stOrage
         addToLocalStorage();
         
     }
 };
-
+//add to local storage function
 const addToLocalStorage = () => {
     localStorage.setItem("saveTask", document.querySelector(".todoContainer").innerHTML);
     localStorage.setItem("saveCounter", document.querySelector("#counter").innerHTML);
@@ -162,12 +159,11 @@ const removeItem = (e) => {
     undoBtn.textContent = "Undo"
 }
 
-const sortList = () => {
+const sortListByPriority = () => {
     let i, switching, b, shouldSwitch;
     list = document.querySelector(".todoContainer");
     switching = true;
-    /* Make a loop that will continue until
-no switching has been done: */
+    //continue the loop while there is no switching
     while (switching) {
       // Start by saying: no switching is done:
       switching = false;
@@ -176,18 +172,15 @@ no switching has been done: */
       for (i = 0; i < b.length - 1; i++) {
         // Start by saying there should be no switching:
         shouldSwitch = false;
-        /* Check if the next item should
-  switch place with the current item: */
+        // Check if the next item shouldswitch place with the current item:
         if (b[i].innerHTML < b[i + 1].innerHTML) {
-          /* If next item is alphabetically lower than current item,
-    mark as a switch and break the loop: */
+          //If the next has bigger priority so it need to be switched
           shouldSwitch = true;
           break;
         }
       }
       if (shouldSwitch) {
-        /* If a switch has been marked, make the switch
-  and mark the switch as done: */
+        // If a switch has been marked, make the switch and mark the switch as done: 
         b[i].parentNode.parentNode.insertBefore(
           b[i + 1].parentNode,
           b[i].parentNode
@@ -197,12 +190,25 @@ no switching has been done: */
     }
   };
 
+//The function compare the users keyword in the search bar to the tasks names
+searchBar.addEventListener("keyup", (e) => {
+    const term = e.target.value.toLowerCase();
+    const allTasks = document.querySelectorAll(".taskWrapper");
+    Array.from(allTasks).forEach(task => {
+        const title = task.querySelector(".todoText").innerText;
+        if (title.toLowerCase().indexOf(term) !== -1) {
+            task.style.display = "grid";
+        } else {
+            task.style.display = "none";
+        }
+    });
+})
+
   const sortListByDate = () => {
     let i, switching, b, shouldSwitch;
     list = document.querySelector(".todoContainer");
     switching = true;
-    /* Make a loop that will continue until
-no switching has been done: */
+    //continue the loop while there is no switching
     while (switching) {
       // Start by saying: no switching is done:
       switching = false;
@@ -211,18 +217,17 @@ no switching has been done: */
       for (i = 0; i < b.length - 1; i++) {
         // Start by saying there should be no switching:
         shouldSwitch = false;
-        /* Check if the next item should
-  switch place with the current item: */
-        if (Date.parse(b[i].innerHTML.slice(0, 10)) > Date.parse(b[i + 1].innerHTML.slice(0, 10))) {
-          /* If next item is alphabetically lower than current item,
-    mark as a switch and break the loop: */
+        // Check if the next item shouldswitch place with the current item:
+        if (Date.parse(b[i].innerHTML.slice(0, 10)) > Date.parse(b[i + 1].innerHTML.slice(0, 10)) ||
+        (Date.parse(b[i].innerHTML.slice(0, 10)) === Date.parse(b[i + 1].innerHTML.slice(0, 10)) && 
+        Date.parse(b[i].innerHTML.slice(11, -1).replace(/\D/g,'')) > Date.parse(b[i + 1].innerHTML.slice(11, -1).replace(/\D/g,'')))) {
+        //If the next item added before so it need to be switched
           shouldSwitch = true;
           break;
         }
       }
       if (shouldSwitch) {
-        /* If a switch has been marked, make the switch
-  and mark the switch as done: */
+    // If a switch has been marked, make the switch and mark the switch as done: 
         b[i].parentNode.parentNode.insertBefore(
           b[i + 1].parentNode,
           b[i].parentNode
@@ -232,123 +237,60 @@ no switching has been done: */
     }
   };
 
-  document.addEventListener('DOMContentLoaded', function() {
+  //this event listener tells if the page is completly loaded with all the tasks from the local storage 
+  window.addEventListener('load', function() {
 //Select all taskstaskWrapper
-const list = document.querySelector('.todoContainer');
-
-    let draggingEle;
-    let placeholder;
-    let isDraggingStarted = false;
-
-    // The current position of mouse relative to the dragging element
-    let x = 0;
-    let y = 0;
-
-    // Swap two nodes
-    const swap = function(nodeA, nodeB) {
-        const parentA = nodeA.parentNode;
-        const siblingA = nodeA.nextSibling === nodeB ? nodeA : nodeA.nextSibling;
-
-        // Move `nodeA` to before the `nodeB`
-        nodeB.parentNode.insertBefore(nodeA, nodeB);
-
-        // Move `nodeB` to before the sibling of `nodeA`
-        parentA.insertBefore(nodeB, siblingA);
-    };
-
-    // Check if `nodeA` is above `nodeB`
-    const isAbove = function(nodeA, nodeB) {
-        // Get the bounding rectangle of nodes
-        const rectA = nodeA.getBoundingClientRect();
-        const rectB = nodeB.getBoundingClientRect();
-
-        return (rectA.top + rectA.height / 2 < rectB.top + rectB.height / 2);
-    };
-
-    const mouseDownHandler = function(e) {
-        draggingEle = e.target;
-
-        // Calculate the mouse position
-        const rect = draggingEle.getBoundingClientRect();
-        x = e.pageX - rect.left;
-        y = e.pageY - rect.top;
-
-        // Attach the listeners to `document`
-        document.addEventListener('mousemove', mouseMoveHandler);
-        document.addEventListener('mouseup', mouseUpHandler);
-    };
-
-    const mouseMoveHandler = function(e) {
-        const draggingRect = draggingEle.getBoundingClientRect();
-
-        if (!isDraggingStarted) {
-            isDraggingStarted = true;
-            
-            // Let the placeholder take the height of dragging element
-            // So the next element won't move up
-            placeholder = document.createElement('div');
-            placeholder.classList.add('placeholder');
-            draggingEle.parentNode.insertBefore(placeholder, draggingEle.nextSibling);
-            placeholder.style.height = `${draggingRect.height}px`;
-        }
-
-        // Set position for dragging element
-        draggingEle.style.position = 'absolute';
-        draggingEle.style.top = `${e.pageY - y}px`; 
-        draggingEle.style.left = `${e.pageX - x}px`;
-
-        // The current order
-        // prevEle
-        // draggingEle
-        // placeholder
-        // nextEle
-        const prevEle = draggingEle.previousElementSibling;
-        const nextEle = placeholder.nextElementSibling;
-        
-        // The dragging element is above the previous element
-        // User moves the dragging element to the top
-        if (prevEle && isAbove(draggingEle, prevEle)) {
-            // The current order    -> The new order
-            // prevEle              -> placeholder
-            // draggingEle          -> draggingEle
-            // placeholder          -> prevEle
-            swap(placeholder, draggingEle);
-            swap(placeholder, prevEle);
-            return;
-        }
-
-        // The dragging element is below the next element
-        // User moves the dragging element to the bottom
-        if (nextEle && isAbove(nextEle, draggingEle)) {
-            // The current order    -> The new order
-            // draggingEle          -> nextEle
-            // placeholder          -> placeholder
-            // nextEle              -> draggingEle
-            swap(nextEle, placeholder);
-            swap(nextEle, draggingEle);
-        }
-    };
-
-    const mouseUpHandler = function() {
-        // Remove the placeholder
-        placeholder && placeholder.parentNode.removeChild(placeholder);
-
-        draggingEle.style.removeProperty('top');
-        draggingEle.style.removeProperty('left');
-        draggingEle.style.removeProperty('position');
-
-        x = null;
-        y = null;
-        draggingEle = null;
-        isDraggingStarted = false;
-
-        // Remove the handlers of `mousemove` and `mouseup`
-        document.removeEventListener('mousemove', mouseMoveHandler);
-        document.removeEventListener('mouseup', mouseUpHandler);
-    };
-
-    // Query all items
-    [].slice.call(list.querySelectorAll('.taskWrapper')).forEach(function(item) {
-        item.addEventListener('mousedown', mouseDownHandler);
-    });
+const draggables = document.querySelectorAll('.taskWrapper')
+const containers = document.querySelectorAll('.todoContainer')
+//give a class to the item we started to drag
+draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', () => {
+      draggable.classList.add('dragging')
+    })
+//remove the class below  
+    draggable.addEventListener('dragend', () => {
+      draggable.classList.remove('dragging')
+    })
+  })
+  
+  /*The event allows us to append the draageble item to the container 
+  and change places with the others*/ 
+    container.addEventListener('dragover', e => {
+      //By defaul dropping inside in an element is disable so we need to prevent it 
+      e.preventDefault()
+      const afterElement = getDragAfterElement(container, e.clientY)
+      const draggable = document.querySelector('.dragging')
+      if (afterElement == null) {
+        container.appendChild(draggable)
+      } else {
+        container.insertBefore(draggable, afterElement)
+      }
+    })
+ 
+  /*the function determine the mouse position when we dragging an element 
+  and return the mouse position of the task that after this position*/
+  function getDragAfterElement(container, y) {
+    //select the tasks that we not dragging right now and covert them to string
+    const draggableElements = [...container.querySelectorAll('.taskWrapper:not(.dragging)')]
+  
+    /*the function returns the closest object to the one we drgging
+    depends on the y position we got from the event*/ 
+    return draggableElements.reduce((closest, child) => {
+      //configre the chiled place  
+      const box = child.getBoundingClientRect()
+      //get the offset between our mouse position and the middle of the box
+      const offset = y - box.top - box.height / 2
+      /*figure out which ofset is the most closer to 0 between the two tasks
+      and return the closest element*/ 
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child }
+      } else {
+        return closest
+      }
+    }, { offset: Number.NEGATIVE_INFINITY }).element
+  }
+  
 });
+
+
+  
