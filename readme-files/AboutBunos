@@ -26,3 +26,6 @@ and alode me to do the compare between times.
  application. Also I've added hover and focus selectors to 
  buutons anf fields, different cursors to the buttons andthe tasks, 
  and opacity when we gargging elements. 
+
+ 8. I've added an option for insert task with
+ enter button.

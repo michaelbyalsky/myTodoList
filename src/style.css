@@ -99,7 +99,7 @@ h1 {
   padding: 10px;
   padding-right: 0px;
   display: grid;
-  grid-template-columns: 0.2fr 0.7fr 0.8fr 0.1fr 1.25fr;
+  grid-template-columns: 0.2fr 0.7fr 1fr 0.1fr 1.25fr;
   border: 1px solid transparent;
   color: rgb(245, 249, 252);
   font-weight: bolder;
