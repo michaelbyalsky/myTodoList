@@ -1,0 +1,255 @@
+
+body {
+  font-family: "Rubik", sans-serif;
+background-color: #128cfc;
+margin-top: 5%;
+}
+
+@media (min-width: 1000px) {
+  body {
+    font-family: "Rubik", sans-serif;
+  background-color: #128cfc;
+  margin-top: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
+    transition: all 0.3s;
+  }
+}
+
+@media (max-width: 1000px) {
+  body {
+    margin: 0%;
+    transition: all 0.3s;
+  }
+}
+
+@media (max-width: 550px) {
+  body {
+    font-size: small;
+    transition: all 0.3s;
+  }
+}
+
+h1 {
+  padding: 5px 20px;
+  margin: 10px;
+  color: #0b5aa2;
+  font-weight: bold;
+  font-size: 25px;
+  display: grid;
+}
+
+#wrapper {
+  width: auto;
+  border: 1px solid black;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  background-color: whitesmoke;
+  border-top: 10px solid blue;
+}
+
+#control-section {
+  display: grid;
+  grid-template-columns: repeat(3, 0.7fr);
+}
+
+#sortSection {
+  margin-top: 1.3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 0.6fr) 0.7fr;
+}
+
+#textInput,
+#prioritySelector,
+#search {
+  border: 2px solid skyblue;
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+}
+
+#addButton {
+  outline: none;
+  color: black;
+  border-color: skyblue;
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+  text-align: center;
+  cursor: pointer;
+}
+
+.todoContainer {
+  padding: 10px;
+  margin: 10px;
+  display: grid;
+  grid-gap: 10px;
+}
+
+.taskWrapper {
+  padding: 10px;
+  padding-right: 0px;
+  display: grid;
+  grid-template-columns: 0.2fr 0.7fr 1fr 0.1fr 1.25fr;
+  border: 1px solid transparent;
+  color: rgb(245, 249, 252);
+  font-weight: bolder;
+  align-items: center;
+  border-radius: 4%;
+  cursor: move;
+}
+
+.delBtn {
+  font-size: 15px;
+  color: black;
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.delBtn:hover {
+  outline: none;
+  color: black;
+  border-color: rgb(25, 146, 25);
+  font-size: 1em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+}
+
+.todoCreatedAt,
+.todoText,
+.delBtn,
+#prioritySelector,
+#addButton,
+#counterWrapper,
+#sortByDateButton,
+#search,
+#deleteAll {
+  margin-left: 0.8rem;
+}
+
+#textInput:focus,
+#prioritySelector:focus,
+#search:focus {
+  outline: none;
+  color: black;
+  border-color: blue;
+}
+
+#counterWrapper {
+  border: solid skyblue;
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
+  color: black;
+  border-radius: 0.25em;
+  padding: 5px 20px;
+  color: #1b5aa1;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+
+#sortButton,
+#sortByDateButton {
+  outline: none;
+  color: black;
+  border-color: skyblue;
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#addButton:hover,
+#sortButton:hover,
+#sortByDateButton:hover {
+  outline: none;
+  color: black;
+  border-color: blue;
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+}
+
+
+
+#deleteAll {
+  outline: none;
+  color: black;
+  border-color: rgb(233, 56, 56);
+  font-size: 1em;
+  padding: 0.25em 0.5em 0.3125em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+  text-align: center;
+  align-items: center;
+  border-width: 0.2rem;
+}
+
+#deleteAll:hover {
+  outline: none;
+  color: black;
+  border-color: rgb(255, 0, 13);
+  background-color: red;
+  transition: all 0.5s;
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+.deleteSure,
+.undoBtn {
+  margin-left: 1rem;
+  outline: none;
+  color: black;
+  border-color: skyblue;
+  font-size: 1em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.deleteSure:hover,
+.undoBtn:hover {
+  outline: none;
+  color: black;
+  border-color: red;
+  font-size: 1em;
+  color: black;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+}
+
+.sure {
+  margin-left: 1rem;
+}
+
+.todoText {
+  word-break: break-all;
+  text-align: left;
+}
+
+.draggable.dragging {
+  opacity: 0.5;
+}
+
